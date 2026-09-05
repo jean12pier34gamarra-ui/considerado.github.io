@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Efecto Checklist | Plataforma Académica</title>
+<meta name="description" content="Plataforma educativa interactiva sobre complejidad, errores humanos y listas de comprobación.">
+
+<style>
+:root{
+--bg:#f4f7f8;--card:#fff;--card2:#eef4f5;--text:#17272d;--muted:#6d7d83;
+--primary:#087f8c;--primary-dark:#05636d;--success:#2ca58d;--border:#dbe5e7;
+--shadow:0 15px 40px rgba(20,40,45,.08);--radius:20px;
+}
+.dark{--bg:#0d171a;--card:#162328;--card2:#1b3035;--text:#edf7f7;--muted:#a7babd;
+--primary:#48c5c2;--primary-dark:#2da7a6;--success:#53d4b1;--border:#294047;
+--shadow:0 15px 40px rgba(0,0,0,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:var(--bg);color:var(--text);line-height:1.6;transition:.3s}
+button,input,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+
+.navbar{position:sticky;top:0;z-index:1000;height:72px;display:flex;justify-content:space-between;
+align-items:center;padding:0 6%;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);
+border-bottom:1px solid var(--border)}
+.dark .navbar{background:rgba(13,23,26,.9)}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900}
+.logo-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--primary);color:#fff}
+.nav-btn{width:42px;height:42px;border:1px solid var(--border);border-radius:50%;background:var(--card);color:var(--text);transition:.3s}
+.nav-btn:hover{transform:translateY(-3px);border-color:var(--primary)}
+
+.hero{min-height:650px;display:flex;align-items:center;padding:90px 6%;overflow:hidden;
+background:radial-gradient(circle at 80% 20%,rgba(8,127,140,.14),transparent 32%),var(--bg)}
+.hero-grid{width:min(1200px,100%);margin:auto;display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.badge{display:inline-flex;padding:7px 13px;border-radius:50px;background:var(--card);border:1px solid var(--border);
+color:var(--primary);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.hero h1{margin-top:24px;font-size:clamp(3rem,6vw,5.5rem);line-height:.98;letter-spacing:-4px}
+.hero h1 span{color:var(--primary)}
+.hero-text{margin-top:28px;max-width:650px;color:var(--muted);font-size:1.15rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:35px}
+.btn{border:none;padding:14px 22px;border-radius:12px;font-weight:850;display:inline-flex;align-items:center;
+justify-content:center;gap:8px;transition:.3s}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 25px rgba(8,127,140,.2)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-3px)}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--primary);transform:translateY(-3px)}
+
+.visual-card{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:30px;
+box-shadow:var(--shadow);transform:rotate(2deg);transition:.4s}
+.visual-card:hover{transform:rotate(0deg) translateY(-8px)}
+.visual-top{display:flex;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.status{padding:5px 10px;border-radius:50px;background:#dff5ef;color:#188b72;font-size:.7rem;font-weight:900}
+.check{display:flex;align-items:center;gap:14px;padding:17px 0;border-bottom:1px solid var(--border)}
+.check-icon{width:27px;height:27px;display:grid;place-items:center;border:2px solid var(--success);
+border-radius:7px;color:var(--success);font-weight:900}
+
+section{padding:90px 6%}.container{width:min(1100px,100%);margin:auto}
+.heading{max-width:760px;margin-bottom:45px}.heading-label{color:var(--primary);font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+.heading h2{margin-top:10px;font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.05;letter-spacing:-2px}
+.heading p{margin-top:17px;color:var(--muted)}
+
+.intro{background:var(--card)}.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.info-card{padding:35px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);transition:.3s}
+.info-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.info-icon{width:55px;height:55px;display:grid;place-items:center;margin-bottom:20px;background:var(--card2);
+color:var(--primary);border-radius:15px;font-size:1.4rem}.info-card h3{margin-bottom:10px}.info-card p{color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:40px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+.stat-number{font-size:1.8rem;font-weight:900;color:var(--primary)}.stat-label{color:var(--muted);font-size:.85rem}
+
+.quiz-section{background:var(--bg)}.progress-box{margin-bottom:30px}
+.progress-info{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.9rem;color:var(--muted)}
+.progress{height:9px;background:var(--card2);border-radius:50px;overflow:hidden}.progress-bar{height:100%;width:0%;background:var(--primary);transition:.5s}
+
+.module{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:18px;overflow:hidden;transition:.3s}
+.module:hover{box-shadow:var(--shadow)}
+.module-header{width:100%;padding:24px 27px;display:flex;justify-content:space-between;align-items:center;
+border:none;background:transparent;color:var(--text);text-align:left}.module-header:hover{background:var(--card2)}
+.module-number{color:var(--primary);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.module-title{display:block;margin-top:5px;font-size:1.2rem;font-weight:850}.arrow{font-size:1.4rem;transition:.3s}
+.module.active .arrow{transform:rotate(180deg)}.module-content{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.module-inner{padding:0 27px 30px}.question{padding:25px 0;border-top:1px solid var(--border)}
+.question-number{color:var(--primary);font-size:.75rem;font-weight:900}.question h4{margin:7px 0 18px;font-size:1rem}
+.options{display:grid;gap:10px}.option{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border);
+border-radius:12px;cursor:pointer;transition:.25s}.option:hover{border-color:var(--primary);background:var(--card2)}
+.option input{accent-color:var(--primary)}
+textarea{width:100%;min-height:120px;resize:vertical;padding:15px;border-radius:12px;border:1px solid var(--border);
+background:var(--bg);color:var(--text);outline:none;transition:.3s}textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(8,127,140,.1)}
+
+.results{display:none;text-align:center;padding:60px 30px;background:var(--card);border:1px solid var(--border);
+border-radius:25px;box-shadow:var(--shadow)}.results.show{display:block;animation:appear .6s ease}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.score-circle{width:150px;height:150px;margin:0 auto 25px;display:grid;place-items:center;border-radius:50%;
+background:conic-gradient(var(--primary) var(--score,0%),var(--card2) 0)}
+.score-inner{width:118px;height:118px;display:grid;place-items:center;border-radius:50%;background:var(--card);
+font-size:2rem;font-weight:900}.results h2{font-size:2rem;margin-bottom:8px}.results p{color:var(--muted);max-width:650px;margin:0 auto 25px}
+.result-meme{display:none;margin:20px auto;max-width:100%;width:320px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.result-meme.show-meme{display:block;animation:appear .5s ease;}
+.result-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+.final{background:var(--card)}.final-box{padding:45px;border-radius:25px;border:1px solid var(--border);
+background:linear-gradient(135deg,var(--card2),var(--card))}.final-box h3{font-size:2rem}.final-box p{color:var(--muted);margin:10px 0 25px}
+footer{padding:45px 6%;text-align:center;background:#0b1518;color:#dce9eb}footer strong{color:#55d2c2}
+footer p{margin-top:8px;color:#8fa6aa;font-size:.85rem}
+.toast{position:fixed;right:25px;bottom:25px;padding:14px 20px;background:var(--text);color:var(--bg);
+border-radius:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s;z-index:3000}
+.toast.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:50px}.intro-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.navbar{padding:0 5%}.logo span{display:none}.hero{padding:70px 5%}.hero h1{font-size:3rem;letter-spacing:-2px}
+section{padding:70px 5%}.stats{grid-template-columns:1fr}.module-header{padding:20px}.module-inner{padding:0 20px 25px}
+.final-box{padding:28px}.btn{width:100%}}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo"><div class="logo-icon">✓</div><span>CHECKLIST / ACADEMIA</span></div>
+<div><button class="nav-btn" id="themeButton" title="Cambiar tema">◐</button></div>
+</nav>
+
+<header class="hero">
+<div class="hero-grid">
+<div>
+<div class="badge">● Plataforma de análisis crítico</div>
+<h1>El Efecto <span>Checklist</span></h1>
+<p class="hero-text">Complejidad, errores y supervivencia. Explora cómo las listas de comprobación pueden convertirse en herramientas para reducir omisiones, mejorar la comunicación y enfrentar sistemas cada vez más complejos.</p>
+<div class="hero-actions">
+<a href="#evaluacion" class="btn btn-primary">Iniciar evaluación →</a>
+<a href="#concepto" class="btn btn-secondary">Conocer el concepto</a>
+</div>
+</div>
+<div class="visual-card">
+<div class="visual-top"><strong>PROTOCOLO CRÍTICO</strong><span class="status">ACTIVO</span></div>
+<div class="check"><div class="check-icon">✓</div><span>Identificar el problema</span></div>
+<div class="check"><div class="check-icon">✓</div><span>Verificar información</span></div>
+<div class="check"><div class="check-icon">✓</div><span>Coordinar al equipo</span></div>
+<div class="check"><div class="check-icon">✓</div><span>Comprobar pasos críticos</span></div>
+<div class="check"><div class="check-icon">✓</div><span>Confirmar resultado</span></div>
+</div>
+</div>
+</header>
+
+<section class="intro" id="concepto">
+<div class="container">
+<div class="heading">
+<div class="heading-label">01 / Marco conceptual</div>
+<h2>Когда saber no siempre es suficiente.</h2>
+<p>En sistemas complejos, los errores no siempre aparecen porque una persona desconoce qué debe hacer. En ocasiones, el conocimiento existe, pero la ejecución falla debido a presión, distracciones, comunicación deficiente u omisiones.</p>
+</div>
+<div class="intro-grid">
+<article class="info-card"><div class="info-icon">✈</div><h3>Aviación</h3><p>La experiencia aeronáutica demuestra la utilidad de procedimientos estructurados para coordinar acciones críticas cuando existe poco margen para el error.</p></article>
+<article class="info-card"><div class="info-icon">+</div><h3>Medicina</h3><p>En medicina, una checklist puede funcionar como una barrera adicional frente a omisiones, favoreciendo la comunicación y la comprobación de acciones importantes.</p></article>
+</div>
+</div>
+</section>
+
+<section id="evaluacion">
+<div class="container">
+<div class="heading">
+<div class="heading-label">02 / Dashboard académico</div>
+<h2>Tu recorrido de aprendizaje.</h2>
+<p>Completa los módulos y observa cómo evoluciona tu progreso durante la evaluación.</p>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-number" id="answered">0</div><div class="stat-label">Preguntas respondidas</div></div>
+<div class="stat"><div class="stat-number">10</div><div class="stat-label">Preguntas totales</div></div>
+<div class="stat"><div class="stat-number" id="scoreDisplay">—</div><div class="stat-label">Puntuación</div></div>
+<div class="stat"><div class="stat-number" id="statusDisplay">En curso</div><div class="stat-label">Estado</div></div>
+</div>
+
+<div class="progress-box">
+<div class="progress-info"><span>Progreso</span><span id="progressText">0%</span></div>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+</div>
+</section>
+
+<section class="quiz-section">
+<div class="container">
+
+<article class="module">
+<button class="module-header"><div><div class="module-number">Módulo I</div><span class="module-title">La Epistemología del Fracaso</span></div><span class="arrow">↓</span></button>
+<div class="module-content"><div class="module-inner">
+<p style="color:var(--muted);margin-bottom:20px">Analiza la diferencia entre no saber qué hacer y no ser capaz de ejecutar correctamente lo que se sabe.</p>
+
+<div class="question"><div class="question-number">PREGUNTA 01</div><h4>¿Cuál diferencia mejor la ignorancia de la ineptitud?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q1" value="correct">La ignorancia implica falta de conocimiento, mientras la ineptitud puede implicar fallar al aplicar conocimientos disponibles.</label>
+<label class="option"><input type="radio" name="q1" value="wrong">Son exactamente el mismo concepto.</label>
+<label class="option"><input type="radio" name="q1" value="wrong">La ineptitud siempre significa falta de estudios.</label>
+<label class="option"><input type="radio" name="q1" value="wrong">La ignorancia solamente ocurre en profesionales.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 02</div><h4>Una persona conoce un procedimiento, pero bajo presión omite un paso. ¿Qué concepto ayuda a explicar mejor esta situación?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q2" value="wrong">Ignorancia absoluta.</label>
+<label class="option"><input type="radio" name="q2" value="correct">Ineptitud o dificultad para ejecutar adecuadamente lo conocido en una situación compleja.</label>
+<label class="option"><input type="radio" name="q2" value="wrong">Ausencia de información.</label>
+<label class="option"><input type="radio" name="q2" value="wrong">Falta de interés exclusivamente.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 03</div><h4>¿Por qué una checklist puede ser útil incluso para una persona experta?</h4>
+<textarea data-critical="true" id="q3" placeholder="Argumenta tu respuesta..."></textarea></div>
+</div></div>
+</article>
+
+<article class="module">
+<button class="module-header"><div><div class="module-number">Módulo II</div><span class="module-title">De la Aeronáutica a la Complejidad Moderna</span></div><span class="arrow">↓</span></button>
+<div class="module-content"><div class="module-inner">
+<p style="color:var(--muted);margin-bottom:20px">La experiencia aeronáutica permite observar cómo los procedimientos pueden ayudar a administrar situaciones donde la memoria individual no basta.</p>
+
+<div class="question"><div class="question-number">PREGUNTA 04</div><h4>¿Cuál es uno de los principales aportes de las checklists en sistemas complejos?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q4" value="correct">Reducir la posibilidad de omitir pasos importantes.</label>
+<label class="option"><input type="radio" name="q4" value="wrong">Eliminar completamente la necesidad de profesionales.</label>
+<label class="option"><input type="radio" name="q4" value="wrong">Hacer innecesario el trabajo en equipo.</label>
+<label class="option"><input type="radio" name="q4" value="wrong">Sustituir todo conocimiento especializado.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 05</div><h4>¿Por qué los sistemas modernos pueden superar la capacidad de una persona para recordar todos sus pasos?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q5" value="correct">Porque contienen numerosas tareas, variables y puntos de coordinación.</label>
+<label class="option"><input type="radio" name="q5" value="wrong">Porque las personas han dejado de estudiar.</label>
+<label class="option"><input type="radio" name="q5" value="wrong">Porque las máquinas siempre producen errores.</label>
+<label class="option"><input type="radio" name="q5" value="wrong">Porque todos los procedimientos son innecesarios.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 06</div><h4>Explica por qué una checklist debe facilitar el trabajo en lugar de convertirse en una carga burocrática.</h4>
+<textarea data-critical="true" id="q6" placeholder="Escribe tu reflexión..."></textarea></div>
+</div></div>
+</article>
+
+<article class="module">
+<button class="module-header"><div><div class="module-number">Módulo III</div><span class="module-title">Jerarquía y Cultura Organizacional</span></div><span class="arrow">↓</span></button>
+<div class="module-content"><div class="module-inner">
+<p style="color:var(--muted);margin-bottom:20px">La seguridad depende también de la comunicación, la coordinación y la posibilidad de que los miembros de un equipo expresen información relevante.</p>
+
+<div class="question"><div class="question-number">PREGUNTA 07</div><h4>¿Qué puede ocurrir cuando la jerarquía impide que una persona comunique una preocupación?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q7" value="correct">Una información relevante puede no llegar a quienes toman decisiones.</label>
+<label class="option"><input type="radio" name="q7" value="wrong">El sistema automáticamente se vuelve más seguro.</label>
+<label class="option"><input type="radio" name="q7" value="wrong">El problema desaparece.</label>
+<label class="option"><input type="radio" name="q7" value="wrong">La checklist deja de ser necesaria.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 08</div><h4>¿Qué característica favorece una cultura organizacional orientada a la seguridad?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q8" value="wrong">Evitar cualquier cuestionamiento.</label>
+<label class="option"><input type="radio" name="q8" value="correct">Promover comunicación, coordinación y responsabilidad compartida.</label>
+<label class="option"><input type="radio" name="q8" value="wrong">Concentrar toda la información en una sola persona.</label>
+<label class="option"><input type="radio" name="q8" value="wrong">Ignorar los errores pequeños.</label>
+</div></div>
+</div></div>
+</article>
+
+<article class="module">
+<button class="module-header"><div><div class="module-number">Módulo IV</div><span class="module-title">Procesos de “Todo o Nada”</span></div><span class="arrow">↓</span></button>
+<div class="module-content"><div class="module-inner">
+<p style="color:var(--muted);margin-bottom:20px">En algunos sistemas, alcanzar el resultado depende de completar correctamente una cadena de acciones.</p>
+
+<div class="question"><div class="question-number">PREGUNTA 09</div><h4>¿Por qué una pequeña omisión puede ser relevante en un proceso complejo?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q9" value="correct">Porque puede interrumpir una cadena de acciones interdependientes.</label>
+<label class="option"><input type="radio" name="q9" value="wrong">Porque todos los errores producen automáticamente el mismo resultado.</label>
+<label class="option"><input type="radio" name="q9" value="wrong">Porque los procedimientos nunca funcionan.</label>
+<label class="option"><input type="radio" name="q9" value="wrong">Porque una checklist elimina todas las decisiones.</label>
+</div></div>
+
+<div class="question"><div class="question-number">PREGUNTA 10</div><h4>¿Cuál debería ser una característica de una buena checklist?</h4>
+<div class="options">
+<label class="option"><input type="radio" name="q10" value="wrong">Ser extremadamente extensa.</label>
+<label class="option"><input type="radio" name="q10" value="correct">Ser clara, breve y centrarse en puntos críticos.</label>
+<label class="option"><input type="radio" name="q10" value="wrong">Reemplazar el criterio profesional.</label>
+<label class="option"><input type="radio" name="q10" value="wrong">Contener toda la información disponible.</label>
+</div></div>
+</div></div>
+</article>
+
+<div style="margin-top:35px;text-align:center">
+<button class="btn btn-primary" id="finishButton">✓ Finalizar evaluación</button>
+</div>
+
+<div class="results" id="results">
+<div class="score-circle" id="scoreCircle"><div class="score-inner"><span id="finalScore">0%</span></div></div>
+<h2 id="resultTitle">Evaluación completada</h2>
+<p id="resultMessage">Tu evaluación ha sido procesada.</p>
+<!-- Imagen añadida para notas de 1 a 5 (puntaje bajo) -->
+<img src="meme-ingeniero.png" alt="Jamás seré ingeniero" class="result-meme" id="resultMeme">
+<div class="result-actions">
+<button class="btn btn-primary" id="copyButton">⧉ Copiar resultados</button>
+<button class="btn btn-secondary" id="downloadButton">↓ Descargar resultados</button>
+<button class="btn btn-secondary" id="resetButton">↻ Reiniciar</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="final">
+<div class="container">
+<div class="final-box">
+<h3>Una checklist no piensa por nosotros.</h3>
+<p>Su valor está en ayudarnos a recordar, verificar, comunicar y coordinar aquello que puede perderse cuando la complejidad aumenta.</p>
+<a href="#evaluacion" class="btn btn-primary">Volver al dashboard ↑</a>
+</div>
+</div>
+</section>
+
+<footer>
+<strong>EL EFECTO CHECKLIST</strong>
+<p>Plataforma educativa de análisis crítico · Complejidad · Error humano · Seguridad · Procesos</p>
+</footer>
+
+<div class="toast" id="toast">Acción realizada.</div>
+
+<script>
+const modules=document.querySelectorAll(".module");
+modules.forEach(module=>{
+ const header=module.querySelector(".module-header");
+ const content=module.querySelector(".module-content");
+ header.addEventListener("click",()=>{
+  const active=module.classList.contains("active");
+  modules.forEach(m=>{
+   m.classList.remove("active");
+   m.querySelector(".module-content").style.maxHeight=null;
+  });
+  if(!active){
+   module.classList.add("active");
+   content.style.maxHeight=content.scrollHeight+"px";
+  }
+ });
+});
+
+const allInputs=document.querySelectorAll('input[type="radio"]');
+const textareas=document.querySelectorAll("textarea");
+const progressBar=document.getElementById("progressBar");
+const progressText=document.getElementById("progressText");
+const answeredDisplay=document.getElementById("answered");
+const scoreDisplay=document.getElementById("scoreDisplay");
+const statusDisplay=document.getElementById("statusDisplay");
+
+function calculateProgress(){
+ const names=[...new Set([...allInputs].map(input=>input.name))];
+ let answered=0;
+ names.forEach(name=>{
+  if(document.querySelector(`input[name="${name}"]:checked`)) answered++;
+ });
+ textareas.forEach(area=>{
+  if(area.value.trim().length>10) answered++;
+ });
+ const total=names.length+textareas.length;
+ const percentage=Math.round(answered/total*100);
+ answeredDisplay.textContent=answered;
+ progressBar.style.width=percentage+"%";
+ progressText.textContent=percentage+"%";
+ localStorage.setItem("checklistProgress",percentage);
+}
+
+allInputs.forEach(input=>input.addEventListener("change",calculateProgress));
+textareas.forEach(area=>area.addEventListener("input",calculateProgress));
+
+textareas.forEach(area=>{
+ const saved=localStorage.getItem(area.id);
+ if(saved) area.value=saved;
+ area.addEventListener("input",()=>localStorage.setItem(area.id,area.value));
+});
+
+allInputs.forEach(input=>{
+ const saved=localStorage.getItem(input.name);
+ if(saved===input.value) input.checked=true;
+ input.addEventListener("change",()=>localStorage.setItem(input.name,input.value));
+});
+
+calculateProgress();
+
+function getResultsText(){
+ let text=`EL EFECTO CHECKLIST
+EVALUACIÓN ACADÉMICA
+==============================
+
+Puntuación: ${document.getElementById("finalScore").textContent}
+
+Resultado: ${document.getElementById("resultTitle").textContent}
+
+RESPUESTAS ABIERTAS
+==============================
+
+`;
+ textareas.forEach((area,index)=>{
+  text+=`Pregunta abierta ${index+1}:\n${area.value||"Sin respuesta"}\n\n`;
+ });
+ return text;
+}
+
+function showToast(message){
+ const toast=document.getElementById("toast");
+ toast.textContent=message;
+ toast.classList.add("show");
+ setTimeout(()=>toast.classList.remove("show"),2500);
+}
+
+document.getElementById("finishButton").addEventListener("click",()=>{
+ let correct=0;
+ for(let i=1;i<=10;i++){
+  const selected=document.querySelector(`input[name="q${i}"]:checked`);
+  if(selected&&selected.value==="correct") correct++;
+ }
+ const percentage=Math.round(correct/8*100);
+ document.getElementById("finalScore").textContent=percentage+"%";
+ document.getElementById("scoreCircle").style.setProperty("--score",percentage+"%");
+ scoreDisplay.textContent=percentage+"%";
+ statusDisplay.textContent="Completado";
+
+ const title=document.getElementById("resultTitle");
+ const message=document.getElementById("resultMessage");
+ const resultMeme=document.getElementById("resultMeme");
+
+ // Condición para nota de 1, 2, 3, 4 o 5 aciertos
+ if(correct >= 1 && correct <= 5){
+  title.textContent="Necesitas reforzar conceptos";
+  message.textContent="Te recomendamos volver a los cuatro módulos y revisar especialmente las diferencias entre conocimiento, ejecución y coordinación.";
+  resultMeme.classList.add("show-meme"); // Muestra la imagen del meme
+ } else {
+  resultMeme.classList.remove("show-meme"); // Oculta el meme si sacó más de 5
+  if(percentage>=90){
+   title.textContent="Excelente análisis";
+   message.textContent="Demuestras una comprensión sólida de la relación entre complejidad, error humano y listas de comprobación.";
+  }else if(percentage>=70){
+   title.textContent="Buen trabajo";
+   message.textContent="Comprendes los conceptos principales. Revisa las preguntas donde tu respuesta fue incorrecta para profundizar.";
+  }else if(percentage>=50){
+   title.textContent="En proceso";
+   message.textContent="Tienes algunos conceptos claros, pero conviene revisar nuevamente los módulos antes de concluir el análisis.";
+  }else{
+   title.textContent="Necesitas reforzar conceptos";
+   message.textContent="Te recomendamos volver a los cuatro módulos y revisar especialmente las diferencias entre conocimiento, ejecución y coordinación.";
+  }
+ }
+
+ document.getElementById("results").classList.add("show");
+ document.getElementById("results").scrollIntoView({behavior:"smooth",block:"center"});
+ localStorage.setItem("checklistScore",percentage);
+});
+
+document.getElementById("copyButton").addEventListener("click",async()=>{
+ try{
+  await navigator.clipboard.writeText(getResultsText());
+  showToast("Resultados copiados.");
+ }catch{showToast("No se pudo copiar.");}
+});
+
+document.getElementById("downloadButton").addEventListener("click",()=>{
+ const blob=new Blob([getResultsText()],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob);
+ const link=document.createElement("a");
+ link.href=url;
+ link.download="resultado-efecto-checklist.txt";
+ document.body.appendChild(link);
+ link.click();
+ document.body.removeChild(link);
+ URL.revokeObjectURL(url);
+ showToast("Archivo descargado.");
+});
+
+document.getElementById("resetButton").addEventListener("click",()=>{
+ if(!confirm("¿Deseas reiniciar toda la evaluación?")) return;
+ document.querySelectorAll('input[type="radio"]').forEach(input=>input.checked=false);
+ textareas.forEach(area=>area.value="");
+ Object.keys(localStorage).filter(k=>k.startsWith("q")||k==="checklistProgress"||k==="checklistScore").forEach(k=>localStorage.removeItem(k));
+ document.getElementById("results").classList.remove("show");
+ document.getElementById("resultMeme").classList.remove("show-meme");
+ scoreDisplay.textContent="—";
+ statusDisplay.textContent="En curso";
+ calculateProgress();
+ showToast("Evaluación reiniciada.");
+});
+
+document.getElementById("themeButton").addEventListener("click",()=>{
+ document.body.classList.toggle("dark");
+ localStorage.setItem("darkMode",document.body.classList.contains("dark"));
+});
+if(localStorage.getItem("darkMode")==="true") document.body.classList.add("dark");
+
+const first=document.querySelector(".module");
+const firstContent=first.querySelector(".module-content");
+first.classList.add("active");
+firstContent.style.maxHeight=firstContent.scrollHeight+"px";
+
+window.addEventListener("resize",()=>{
+ document.querySelectorAll(".module.active .module-content").forEach(content=>{
+  content.style.maxHeight=content.scrollHeight+"px";
+ });
+});
+</script>
+</body>
+</html>
