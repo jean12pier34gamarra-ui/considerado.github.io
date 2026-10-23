@@ -167,39 +167,70 @@ CHUNA altera el reloj de juego pero no debe multiplicar 30× el movimiento físi
 
 ## 11. Diez arquetipos de Poketirano colosal — ALCANCE OBLIGATORIO
 
-**No omitas esta sección ni la reduzcas a una mención genérica de “añadir jefes”.** Los diez diseños y las habilidades descritas forman parte de lo acordado. Cada uno debe tener referencia visual propia, tamaño de jefe colosal, barra de vida, entrada, fases, ataque insignia exclusivo, telegráficos claros, recuperación y contrajuego.
+**No omitas esta sección ni la reduzcas a una mención genérica de “añadir jefes”.** Los diez diseños y sus habilidades forman parte esencial de lo acordado. Cada jefe usa la referencia visual asociada, tiene tamaño colosal, barra de vida, entrada, fases, ataque insignia exclusivo, telegráfico, recuperación y contrajuego. No reutilices la habilidad insignia en Pokémon comunes, élites o los otros Poketiranos.
 
-| Ref. | Poketirano | Habilidad exclusiva acordada |
+### Mapa rápido de habilidades
+
+| Ref. | Poketirano | Habilidad insignia exclusiva |
 |---|---|---|
-| 01 | Guardián Celular | Prisma de las Mil Celdas: cuadrícula energética y núcleos destructibles para abrir corredores. |
-| 02 | Dragón del Vacío | Falla de Eternidad: grietas dimensionales, haces secuenciales y ondas de colapso. |
-| 03 | Hidra de las Tres Fauces | Convergencia Trifauce: ataques diferenciados de tres cabezas que luego se combinan con un corredor seguro. |
-| 04 | Coloso Acorazado | Asedio de Placas Sísmicas: carga telegrafiada, anillos sísmicos y punto débil en la espalda. |
-| 05 | Titán del Núcleo Encadenado | Prisión de Grilletes Primordiales: cadenas que forman figuras de contención y anclas destructibles. |
-| 06 | Guardián de las Raíces | Veredicto del Bosque Invertido: raíces secuenciales y núcleo que interrumpe la red. |
-| 07 | Monolito Fragmentado | Constelación de Puños Errantes: fragmentos orbitales que impactan en secuencia y dejan refugios temporales. |
-| 08 | Sabueso del Eco Espectral | Cacería de los Tres Ecos: ilusiones que repiten trayectorias; solo el cuerpo real causa daño. |
-| 09 | Pesadilla Abisal | Eclipse del Horizonte: sombras que repiten con retraso la ruta del jugador y anclas luminosas. |
-| 10 | Titán Glacial | Corona de la Última Aurora: cristales destructibles, refracción y explosiones escalonadas. |
+| 01 | Guardián Celular | Prisma de las Mil Celdas |
+| 02 | Dragón del Vacío | Falla de Eternidad |
+| 03 | Hidra de las Tres Fauces | Convergencia Trifauce |
+| 04 | Coloso Acorazado | Asedio de Placas Sísmicas |
+| 05 | Titán del Núcleo Encadenado | Prisión de Grilletes Primordiales |
+| 06 | Guardián de las Raíces | Veredicto del Bosque Invertido |
+| 07 | Monolito Fragmentado | Constelación de Puños Errantes |
+| 08 | Sabueso del Eco Espectral | Cacería de los Tres Ecos |
+| 09 | Pesadilla Abisal | Eclipse del Horizonte |
+| 10 | Titán Glacial | Corona de la Última Aurora |
 
-Las once imágenes representan diez diseños: las dos vistas del coloso acorazado pertenecen al mismo jefe. Son referencias visuales; no afirmes identidades oficiales si no se pueden confirmar. Escala visual orientativa: 2,8–4 veces la altura del jugador, con hitbox justa, barra de vida propia, animación de entrada y fases claras. No basta con agrandar ligeramente un enemigo normal.
+Las once imágenes representan diez diseños porque las vistas frontal y posterior del coloso acorazado pertenecen al mismo jefe. Las referencias visuales no confirman por sí solas la identidad oficial de las criaturas; respeta la forma, la silueta y los colores aportados por el usuario.
 
-Cada jefe tiene una habilidad insignia verdaderamente exclusiva. Ningún Pokémon normal, élite corriente u otro Poketirano puede reutilizarla. Cada ataque necesita aviso, resolución, cooldown, ventana de recuperación y contrajuego. No se permiten golpes inevitables, bloqueo permanente del jugador ni zonas sin salida.
+### Habilidades, fases y contrajuego obligatorios
 
-1. **Guardián Celular — Prisma de las Mil Celdas.** Traza una cuadrícula de energía; celdas alternas se activan tras una cuenta regresiva. Destruir núcleos marcados abre corredores. En la fase final las líneas convergen en diagonales, manteniendo una ruta segura. Referencia: guardian_celular.
-2. **Dragón del Vacío — Falla de Eternidad.** Abre grietas dimensionales con haces largos secuenciales que colapsan en ondas secundarias. La pinza final de dos fracturas debe dejar un corredor seguro y una ventana vulnerable. Referencia: dragon_vacio.
-3. **Hidra de las Tres Fauces — Convergencia Trifauce.** Cada cabeza prepara un patrón distinto: barrido lineal, lluvia de proyectiles y golpe de zona retrasado. En fase final los patrones se combinan, con un pasillo seguro y agotamiento posterior. Referencia: hidra_tres_fauces.
-4. **Coloso Acorazado — Asedio de Placas Sísmicas.** Carga por una ruta marcada, impacta y genera anillos sísmicos esquivables. Expone puntos débiles en la espalda. La fase final añade una segunda carga anunciada, no una persecución instantánea. Las imágenes frontal y posterior son un único jefe. Referencia: coloso_acorazado.
-5. **Titán del Núcleo Encadenado — Prisión de Grilletes Primordiales.** Une fragmentos mediante cadenas de energía que forman triángulos de contención. Destruir un ancla abre una salida; si se completa la formación, el golpe queda anunciado y el núcleo se expone después. Referencia: titan_nucleo.
-6. **Guardián de las Raíces — Veredicto del Bosque Invertido.** Raíces emergen en carriles señalizados. Un núcleo alimenta la red; destruirlo cancela el siguiente ciclo y limita la regeneración. Referencia: guardian_raices.
-7. **Monolito Fragmentado — Constelación de Puños Errantes.** Fragmentos y puños orbitan en formaciones legibles y caen uno a uno creando ondas. La formación deja un refugio temporal móvil; al final el monolito se recompone y queda vulnerable. Referencia: monolito_fragmentado.
-8. **Sabueso del Eco Espectral — Cacería de los Tres Ecos.** Crea copias que repiten trayectorias anteriores mientras el cuerpo real flanquea. El verdadero emite una señal visual distintiva; los ecos no deben infligir daño duplicado. Referencia: sabueso_espectral.
-9. **Pesadilla Abisal — Eclipse del Horizonte.** Reduce moderadamente la iluminación sin ocultar HUD y repite la última ruta del jugador como sombras de ataque retrasadas. Anclas luminosas disipan el efecto y crean zonas seguras; los controles nunca se bloquean. Referencia: pesadilla_abisal.
-10. **Titán Glacial — Corona de la Última Aurora.** Levanta cristales que refractan líneas de energía y luego estallan. Destruir cristales abre huecos o acorta la explosión. La fase final forma un anillo incompleto con salida clara; el hielo ralentiza brevemente. Referencia: titan_glacial.
+**1. Guardián Celular — Prisma de las Mil Celdas**  
+Usa la referencia serpentina/celular verde-negra (con alternativa dorada). Marca el suelo con una cuadrícula energética; los segmentos se activan por turnos tras la cuenta regresiva. Algunos núcleos quedan expuestos: destruirlos abre corredores o interrumpe el siguiente patrón. En fase final las líneas convergen en diagonales, pero siempre queda una ruta de escape identificable. El contrajuego es leer el patrón, romper un número limitado de núcleos y moverse por los corredores disponibles.
 
-Implementa una máquina de estados compatible con la arquitectura actual: introducción, fase, telegráfico, ataque, recuperación, cambio de fase y derrota. Cooldowns, fases y recompensas se procesan una vez. Mantén pooling, Juice Manager, colisiones y reloj visual independiente.
+**2. Dragón del Vacío — Falla de Eternidad**  
+Usa la referencia del dragón cósmico alargado y esquelético. Abre grietas dimensionales que anuncian rayos largos y secuenciales; después cada grieta colapsa en una onda secundaria. No dispares todas las grietas simultáneamente. En fase superior una silueta colosal cruza la arena y altera brevemente la trayectoria de algunos proyectiles sin quitar al jugador el control. El ataque final combina dos fracturas como una pinza, dejando un corredor central o lateral seguro. El contrajuego es escapar de la línea marcada y atacar el foco vulnerable durante la recuperación.
 
-No generes todos los Poketiranos al mismo tiempo. El calendario de Poketirano existente sigue intacto. Nuevos encuentros especiales solo se añaden conforme a una progresión documentada y nunca duplican tickets ni recompensas.
+**3. Hidra de las Tres Fauces — Convergencia Trifauce**  
+Usa la referencia de dragón de tres cabezas. Cada cabeza tiene señal y patrón propios: barrido lineal, lluvia acotada de proyectiles y golpe de zona retrasado. En fase final coordina los tres patrones en una formación triangular, pero conserva un pasillo seguro que cambia entre ciclos. Tras la descarga las cabezas quedan brevemente agotadas. El contrajuego es leer cada señal, reposicionarse y atacar una cabeza expuesta, sin generar tres impactos inevitables sobre el mismo punto.
+
+**4. Coloso Acorazado — Asedio de Placas Sísmicas**  
+Usa juntas las vistas frontal y posterior del cuadrúpedo blindado como un único jefe. Baja el cuerpo y anuncia una carga por una trayectoria concreta; el choque crea anillos sísmicos esquivables. Después brillan puntos débiles en la espalda y las placas se vuelven vulnerables. En fase superior añade una segunda carga tras una pausa señalizada, no una persecución instantánea e infinita. El contrajuego es salir de la trayectoria, evitar los anillos y reposicionarse detrás o junto al jefe durante su recuperación. La armadura frontal puede reducir daño, pero no dar invulnerabilidad permanente.
+
+**5. Titán del Núcleo Encadenado — Prisión de Grilletes Primordiales**  
+Usa la referencia de golem de piedra/metal con fragmentos flotantes y energía cian/púrpura. Une fragmentos mediante cadenas de energía que forman triángulos de contención. Los enlaces se encienden uno por uno; el jugador puede destruir un ancla visible para abrir una salida. Si se completa la figura, descarga una onda anunciada y deja el núcleo expuesto después. En fase superior reorganiza fragmentos como escudo. El contrajuego es romper un ancla, no quedarse dentro de los enlaces y presionar el núcleo en la ventana vulnerable. La cadena nunca aparece instantáneamente encima del jugador.
+
+**6. Guardián de las Raíces — Veredicto del Bosque Invertido**  
+Usa la referencia de entidad arbórea/espiritual. Marca carriles de tierra con grietas y brotes antes de hacer emerger raíces gigantes en secuencia, bloqueando temporalmente algunas rutas. Una semilla-núcleo visible alimenta la red; dañarla detiene el siguiente ciclo y reduce una regeneración limitada. En fase final las raíces forman una espiral incompleta con una salida deliberada. El contrajuego es cambiar de carril, atacar el núcleo durante su exposición y aprovechar la pausa después del crecimiento. Los aliados vegetales no pueden curar indefinidamente al jefe.
+
+**7. Monolito Fragmentado — Constelación de Puños Errantes**  
+Usa la referencia del coloso mineral articulado. Desprende puños o placas que orbitan en formaciones legibles, brillan en orden y caen uno por uno, creando ondas de impacto. La secuencia deja un refugio temporal que cambia de sitio. En fase superior forma una corona de fragmentos, hace un cierre convergente y luego se recompone aturdido. El contrajuego es observar el orden, moverse antes de cada impacto y aprovechar la recomposición. Limita piezas simultáneas para no saturar Canvas.
+
+**8. Sabueso del Eco Espectral — Cacería de los Tres Ecos**  
+Usa la referencia canina espectral azul/blanca con variante violeta. Deja dos o tres ilusiones residuales que repiten la trayectoria anterior mientras el cuerpo real flanquea. El cuerpo auténtico tiene un destello distinto antes de abalanzarse; los ecos se disipan y no duplican el daño de contacto. En fase superior puede fingir una retirada y rodear al jugador, pero nunca teletransportarse encima sin aviso. El contrajuego es reconocer el cuerpo real y esquivar la trayectoria marcada.
+
+**9. Pesadilla Abisal — Eclipse del Horizonte**  
+Usa la referencia oscura/fantasmagórica roja y magenta. Reduce la iluminación solo moderadamente, preservando HUD, sprites y avisos. Las sombras repiten con retraso la última ruta del jugador y luego convergen en líneas de corte anunciadas. Existen anclas luminosas destructibles que disipan el eclipse antes de tiempo. En fase superior, la silueta gigante genera una onda oscura con anillos de salida visibles. El contrajuego es destruir anclas y cambiar la ruta prevista; los controles nunca se bloquean y la pantalla nunca queda completamente oscura.
+
+**10. Titán Glacial — Corona de la Última Aurora**  
+Usa la referencia del titán con cristales cian y paleta azul/violeta. Levanta cristales en lugares anunciados; sus caras refractan líneas de energía que se cruzan antes de que los cristales estallen. El jugador puede dañar los cristales para abrir huecos o acortar la explosión. En fase superior crea un anillo de hielo incompleto que se contrae por etapas, siempre con una salida clara. El suelo helado ralentiza por poco tiempo, no congela indefinidamente. El contrajuego es destruir cristales bloqueantes y cruzar las aperturas antes del estallido.
+
+### Arquitectura y balance de jefes
+
+- Usa una máquina de estados compatible con la arquitectura existente: introducción, fase, telegráfico, ataque, recuperación, cambio de fase y derrota. No es obligatorio usar esos nombres literalmente si ya existe un sistema equivalente.
+- Cada jefe debe tener por lo menos dos fases cuando la arquitectura lo permita; umbrales de cambio se procesan una sola vez. Los cambios pueden alterar patrón y efectos, no multiplicar todas las estadísticas sin límite.
+- Los ataques grandes necesitan tiempo suficiente para leer y esquivar; usa aproximadamente 1,2–2,5 segundos de aviso como referencia ajustada a la habilidad, nunca como cifra rígida para todos los patrones.
+- No permitir golpes inevitables, encerramientos sin salida, cadenas infinitas de ataques o bloqueo de controles.
+- Separa la escala gráfica colosal de la hitbox y del daño por contacto. Mantén visible el HUD, los telegráficos y al jugador.
+- Mantén el pixel art nítido con nearest-neighbor e `imageSmoothingEnabled = false`; no deformes sprites para encajarlos.
+- Reutiliza Juice Manager, object pooling, colisiones y avisos existentes. No pongas los diez patrones complejos en un único bloque que se ejecute para todos los enemigos en cada fotograma.
+- Nunca generes los diez jefes simultáneamente. Solo aparece el encuentro previsto por el calendario o el modo de progresión aprobado.
+- Conserva el evento actual de Poketirano cada 300 segundos de tiempo de juego, sus estadísticas ×9,98, el telegráfico del rayo de 2,5 segundos, el disparo de 0,56 segundos con daño ×6 y exactamente un ticket rojo garantizado por derrota confirmada. Si la implementación real difiere, reporta la discrepancia antes de cambiarla.
+- Los cambios de fase, muerte, recompensas y callbacks deben ser idempotentes; cada jefe muerto solo concede sus recompensas una vez. Las animaciones visuales no se aceleran por CHUNA.
+- Las variantes de color de las referencias no se deben asumir automáticamente como formas oficiales, variocolor o jefes adicionales; documenta su uso y conserva la identidad existente de la Pokédex.
 
 ## 12. Mapa, biomas y legibilidad — MEJORA GRÁFICA Y MICROANIMACIÓN OBLIGATORIAS
 
