@@ -15,6 +15,8 @@ Antes de editar cualquier archivo bajo `pokelinage/`, lee `pokelinage/docs/PROMP
 - Mantén los medios embebidos si lo están. No finjas que las referencias visuales se han subido si no están en el árbol Git.
 - Haz cambios localizados y revisables. Para cambios grandes, usa rama separada, checkpoint y Pull Request.
 - Usa sprites pixel art 2D nítidos, verifica las dimensiones reales de cada hoja y no elimines píxeles negros interiores al aislar fondos.
+- La mejora del mapa es obligatoria: terreno más detallado por bioma y microanimaciones ambientales sutiles (hierba, flores/hojas, agua, brillos o partículas) usando tiempo visual independiente de CHUNA; no muevas todo el mapa para simular animación.
+- Incluye explícitamente los diez arquetipos de Poketirano y sus habilidades insignia únicas descritas en la sección 11 del prompt. No elimines esa sección ni reemplaces sus mecánicas por un jefe genérico.
 - Consolida la lógica de spawn/escalado antes de sumar multiplicadores; conserva CHUNA y el calendario/recompensa actual de Poketirano.
 - Cada habilidad insignia de Poketirano debe ser exclusiva, gigante pero con hitbox justa, telegráfico, fase de ataque, recuperación y contrajuego.
 - Nunca declares pruebas de navegador, de audio ni de rendimiento que no se hayan ejecutado realmente. Distingue validación estática de pruebas reales.
