@@ -5,6 +5,8 @@ Este directorio está reservado para alojar el juego Pokelinage en GitHub Pages,
 ## Estado
 
 - [x] Especificación maestra consolidada y disponible en `docs/PROMPT_MAESTRO_UNIFICADO.md`.
+- [ ] Mejorar de forma perceptible el arte del mapa y añadir microanimaciones ambientales por bioma (hierba, flores/hojas, agua, brillos/partículas) sin regenerar objetos por fotograma ni acelerar con CHUNA.
+- [ ] Implementar el roster de diez Poketiranos con las habilidades insignia únicas listadas en el prompt; no tratarlos como un único jefe genérico.
 - [ ] Importar la versión completa y vigente de `pokelinage.html` como `index.html` de esta carpeta, conservando todos los medios integrados.
 - [ ] Añadir las imágenes de referencia del entrenador, Pokémon y diez arquetipos de Poketirano.
 - [ ] Revisar sintaxis, referencias a recursos y consola del navegador.
