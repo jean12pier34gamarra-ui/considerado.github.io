@@ -1,0 +1,12 @@
+/* Apply after the game's original CSS. Keyboard controls remain available on desktop. */
+html:not(.mobile-device) .bottom-controls {
+  display: none !important;
+}
+html.mobile-device .bottom-controls {
+  display: flex !important;
+}
+.game-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+}
