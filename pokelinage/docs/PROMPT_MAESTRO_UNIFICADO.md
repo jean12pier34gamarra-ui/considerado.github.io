@@ -1,6 +1,6 @@
 # POKELINAGE — PROMPT MAESTRO UNIFICADO PARA GITHUB COPILOT
 
-**Versión consolidada:** reúne la guía de continuidad original, el prompt maestro visual/técnico, las recomendaciones de IA y balance, las últimas modificaciones de audio y pantalla completa y el diseño de los diez arquetipos de Poketiranos.
+**Versión 3 corregida:** especifica de forma obligatoria la mejora gráfica del mapa y sus microanimaciones ambientales; incluye explícitamente el roster de diez Poketiranos con habilidades insignia exclusivas, además de la guía de continuidad, sprites, Hoopa, IA, balance, audio y publicación web.
 
 ## 1. Rol profesional y objetivo
 
@@ -165,7 +165,22 @@ Se debe evitar el power-creep con mecánicas y no solo vida: escudos temporales,
 
 CHUNA altera el reloj de juego pero no debe multiplicar 30× el movimiento físico, las órbitas, las partículas visuales ni la velocidad de animación. Los temporizadores especiales deben dispararse una sola vez incluso después de saltos del reloj.
 
-## 11. Diez arquetipos de Poketirano colosal
+## 11. Diez arquetipos de Poketirano colosal — ALCANCE OBLIGATORIO
+
+**No omitas esta sección ni la reduzcas a una mención genérica de “añadir jefes”.** Los diez diseños y las habilidades descritas forman parte de lo acordado. Cada uno debe tener referencia visual propia, tamaño de jefe colosal, barra de vida, entrada, fases, ataque insignia exclusivo, telegráficos claros, recuperación y contrajuego.
+
+| Ref. | Poketirano | Habilidad exclusiva acordada |
+|---|---|---|
+| 01 | Guardián Celular | Prisma de las Mil Celdas: cuadrícula energética y núcleos destructibles para abrir corredores. |
+| 02 | Dragón del Vacío | Falla de Eternidad: grietas dimensionales, haces secuenciales y ondas de colapso. |
+| 03 | Hidra de las Tres Fauces | Convergencia Trifauce: ataques diferenciados de tres cabezas que luego se combinan con un corredor seguro. |
+| 04 | Coloso Acorazado | Asedio de Placas Sísmicas: carga telegrafiada, anillos sísmicos y punto débil en la espalda. |
+| 05 | Titán del Núcleo Encadenado | Prisión de Grilletes Primordiales: cadenas que forman figuras de contención y anclas destructibles. |
+| 06 | Guardián de las Raíces | Veredicto del Bosque Invertido: raíces secuenciales y núcleo que interrumpe la red. |
+| 07 | Monolito Fragmentado | Constelación de Puños Errantes: fragmentos orbitales que impactan en secuencia y dejan refugios temporales. |
+| 08 | Sabueso del Eco Espectral | Cacería de los Tres Ecos: ilusiones que repiten trayectorias; solo el cuerpo real causa daño. |
+| 09 | Pesadilla Abisal | Eclipse del Horizonte: sombras que repiten con retraso la ruta del jugador y anclas luminosas. |
+| 10 | Titán Glacial | Corona de la Última Aurora: cristales destructibles, refracción y explosiones escalonadas. |
 
 Las once imágenes representan diez diseños: las dos vistas del coloso acorazado pertenecen al mismo jefe. Son referencias visuales; no afirmes identidades oficiales si no se pueden confirmar. Escala visual orientativa: 2,8–4 veces la altura del jugador, con hitbox justa, barra de vida propia, animación de entrada y fases claras. No basta con agrandar ligeramente un enemigo normal.
 
@@ -186,9 +201,35 @@ Implementa una máquina de estados compatible con la arquitectura actual: introd
 
 No generes todos los Poketiranos al mismo tiempo. El calendario de Poketirano existente sigue intacto. Nuevos encuentros especiales solo se añaden conforme a una progresión documentada y nunca duplican tickets ni recompensas.
 
-## 12. Mapa, biomas y legibilidad
+## 12. Mapa, biomas y legibilidad — MEJORA GRÁFICA Y MICROANIMACIÓN OBLIGATORIAS
 
-Conserva el mapa actual, movimiento y colisiones. Diferencia la paleta por bioma; añade vegetación, flores, rocas, charcos y detalles mediante decoración determinista o reutilizable, no por fotograma. El paisaje no debe tapar jugador, Pokémon, enemigos, proyectiles, telegráficos, portales u objetos.
+No basta con conservar el mapa estático o agregar unas cuantas plantas. **Mejora visiblemente la calidad gráfica del mapa de combate y añade animaciones ambientales pequeñas, perceptibles y continuas**, preservando su cámara, límites, colisiones, controles, distribución y mecánicas actuales.
+
+### Calidad visual del terreno
+- Mejora el pixel art de suelos, caminos, césped, tierra y piedra, con tiles más ricos y coherentes, variación controlada de patrones, bordes de terreno limpios, pequeñas manchas de textura, sombras cortas bajo árboles/rocas y profundidad mediante capas de fondo, terreno, decoración baja y oclusiones frontales.
+- Cada bioma debe distinguirse por paleta, tipo de terreno, vegetación y distribución de props. No reutilices exactamente el mismo paisaje cambiando solo el color.
+- Usa nearest-neighbor y `imageSmoothingEnabled = false` para pixel art; evita blur, bordes interpolados y escalado subpíxel. Mantén legibles los sprites.
+- La calidad mejorada debe ser visible durante la partida, no solamente en menús o imágenes promocionales.
+
+### Microanimaciones del mapa
+En cada bioma implementa al menos uno o varios elementos ambientales animados:
+- Hierba alta que se balancea levemente en 2–3 píxeles o frames simulando una brisa.
+- Flores y pequeños arbustos que se mecen o suben y bajan de forma discreta.
+- Agua, charcos y lagunas con 2–4 fases de ondulación, destellos pixelados y pequeñas ondas que aparecen y desaparecen.
+- Hojas, copas de árboles o lianas con oscilación mínima, sin deformar sus sprites.
+- Partículas ocasionales y escasas —polvo, motas de luz, luciérnagas, hojas o cristales— elegidas según el bioma.
+- Brillos ambientales en minerales, cristales o zonas mágicas, con cadencia baja y sin parecer ataques.
+
+Las animaciones deben ser sutiles pero visibles aunque el jugador permanezca quieto. **No hagas girar, sacudir ni desplazar todo el mapa para simular vida.** Anima los elementos o capas individuales y conserva estable el seguimiento de cámara existente.
+
+### Temporización y rendimiento
+- Anima mediante `dt` o un reloj visual independiente y estable. El multiplicador `CHUNA` no debe acelerar 30× hierba, agua, partículas, sprites, cámara u órbitas.
+- Genera la colocación del decorado usando una semilla estable por mapa/bioma; inicializa una vez las posiciones y no regeneres la vegetación cada fotograma.
+- Cachea el terreno estático en un canvas auxiliar o textura reutilizable si encaja con el motor actual. Redibuja solo los elementos dinámicos, reutiliza el pool de partículas y aplica culling a decoraciones fuera de cámara si es necesario.
+- Mantén capas claras: terreno, decoración baja, sombras, entidades, elementos frontales/oclusiones controladas, efectos de combate y telegráficos.
+- Ninguna decoración o partícula puede tapar al jugador, compañeros, enemigos, botín, portales, barra de jefe o avisos de peligro. Conserva contraste entre suelo y entidades.
+- Adapta partículas y efectos a móviles modestos; respeta `prefers-reduced-motion` cuando sea razonable y conserva un mapa legible si se reduce el movimiento.
+- Al terminar, lista exactamente qué aspectos del terreno se mejoraron y qué microanimaciones funcionan en cada bioma. No digas que el mapa está animado si solo se anima el jugador o la cámara.
 
 Los sprites pueden recibir sombras y efectos moderados, con prioridad a una silueta legible. Mantén controles accesibles en PC y móvil.
 
