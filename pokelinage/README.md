@@ -20,3 +20,14 @@ El archivo raíz `/index.html` corresponde a otro proyecto (“El Efecto Checkli
 ## Fuente canónica
 
 La versión de trabajo debe partir del archivo completo y actual `pokelinage.html`, no de una reconstrucción. El prompt define los requisitos de preservación, mejoras gráficas, IA, spawn, dificultad, portales, audio y Poketiranos.
+
+
+## Implementación de investigación
+
+La rama ahora contiene código utilizable para los dos objetivos técnicos recientes:
+
+- `implementation/map-canvas-cache.js`: caché LRU para chunks de terreno de 512×512 y texturas de lagos, manteniendo las ondas como una capa dinámica.
+- `implementation/responsive-controls.js` y `implementation/responsive-controls.css`: controles táctiles para móviles, ocultos en PC.
+- `implementation/validate-html.mjs`: validaciones estáticas básicas de la versión monolítica.
+
+La versión jugable autosuficiente modificada se entrega como archivo HTML descargable en la conversación. Este repositorio aún no contiene el HTML monolítico completo como `pokelinage/index.html); por eso no debe considerarse que el juego ya esté publicado por GitHub Pages. El `index.html` de la raíz se mantiene intacto.
